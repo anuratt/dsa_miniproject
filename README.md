@@ -1,12 +1,11 @@
 # 🏥 Hospital Management System
 ### DSA Mini Project — Anurat Niraula 3rd Semester Computer Engineering
-**Qt GUI | C++17 | Priority Queue · Linked List · Stack**
 
 ---
 
 ## 📋 Project Overview
 
-A fully functional **Hospital Management System** built with **Qt 6 GUI** and custom **Data Structure** implementations from scratch (no STL containers for the core DSA components).
+A fully functional **Hospital Management System** built with **Qt GUI** and custom **Data Structure** implementations.
 
 The system models a real hospital workflow:
 - Patients arrive and are placed in a **triage priority queue**
