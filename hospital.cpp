@@ -2,7 +2,6 @@
 #include "hospital.h"
 #include <QDate>
 
-
 Hospital::Hospital(const QString& name)
     : hospitalName(name), nextPatientId(1001), nextDoctorId(1) {}
 
@@ -21,7 +20,6 @@ int Hospital::addToTriage(const QString& name, int age, const QString& gender,
     return id;
 }
 
-
 bool Hospital::admitNextPatient() {
     if (triageQueue.isEmpty()) return false;
 
@@ -38,7 +36,6 @@ bool Hospital::admitNextPatient() {
     }
     return true;
 }
-
 
 bool Hospital::dischargePatient(int id) {
     Patient* p = records.findById(id);
@@ -64,7 +61,6 @@ bool Hospital::updatePatient(int id, const Patient& updated) {
     }
     return ok;
 }
-
 
 Patient* Hospital::findPatient(int id) {
     return records.findById(id);
@@ -96,10 +92,6 @@ QVector<Patient> Hospital::getQueueSnapshot() const {
     }
     return snap;
 }
-
-
-
-
 
 
 int Hospital::addDoctor(const QString& name, const QString& spec, const QString& contact) {
@@ -161,9 +153,6 @@ HospitalStats Hospital::getStats() const {
     }
     return stats;
 }
-
-
-
 
 
 void Hospital::loadSampleData() {
