@@ -1,6 +1,5 @@
 #include "patientrecord.h"
 
-
 PatientRecord::PatientRecord()
     : head(nullptr), tail(nullptr), count(0) {}
 
@@ -14,7 +13,6 @@ PatientRecord::~PatientRecord() {
     }
     head = tail = nullptr;
 }
-
 
 void PatientRecord::addPatient(const Patient& p) {
     RecordNode* newNode = new RecordNode(p);
@@ -30,7 +28,6 @@ void PatientRecord::addPatient(const Patient& p) {
     }
     count++;
 }
-
 
 bool PatientRecord::removePatient(int id) {
     RecordNode* current = head;
@@ -70,7 +67,6 @@ bool PatientRecord::updatePatient(int id, const Patient& updated) {
     }
     return false;
 }
-
 
 Patient* PatientRecord::findById(int id) {
     RecordNode* current = head;
