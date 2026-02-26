@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    mainwindow.ui — Qt Designer UI Layout
+    Hospital Management System
+    Tabs: Dashboard | Triage Queue | Patients | Doctors
+-->
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1200</width><height>780</height></rect></property>
+  <property name="windowTitle"><string>Hospital Management System</string></property>
+
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout" stretch="0">
+    <property name="spacing"><number>0</number></property>
+    <property name="margin"><number>0</number></property>
+
+    <!-- ── Top Header Bar ── -->
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="minimumHeight"><number>64</number></property>
+      <property name="styleSheet"><string>background:#2B6CB0; color:white;</string></property>
+      <layout class="QHBoxLayout">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <item>
+        <widget class="QLabel" name="lblHospitalName">
+         <property name="text"><string>🏥  City General Hospital</string></property>
+         <property name="styleSheet"><string>font-size:20px; font-weight:bold; color:white;</string></property>
+        </widget>
+       </item>
+       <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <item>
+        <widget class="QLabel" name="lblClock">
+         <property name="text"><string>Loading...</string></property>
+         <property name="styleSheet"><string>font-size:13px; color:#BEE3F8;</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ── Tab Widget ── -->
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!-- TAB 0: Dashboard                                   -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="tabDashboard">
+       <attribute name="title"><string>Dashboard</string></attribute>
+       <layout class="QVBoxLayout">
+        <property name="margin"><number>20</number></property>
+
+        <!-- Stat Cards Row -->
+        <item>
+         <layout class="QHBoxLayout" name="statsRow">
+
+          <item><widget class="QGroupBox" name="gbTotal">
+           <property name="title"><string>Total Patients</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblTotalPatients">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#2B6CB0;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+          <item><widget class="QGroupBox" name="gbAdmitted">
+           <property name="title"><string>Admitted</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblAdmitted">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#276749;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+          <item><widget class="QGroupBox" name="gbDischarged">
+           <property name="title"><string>Discharged</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblDischarged">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#4A5568;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+          <item><widget class="QGroupBox" name="gbQueue">
+           <property name="title"><string>In Triage Queue</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblInQueue">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#B7791F;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+          <item><widget class="QGroupBox" name="gbDoctors">
+           <property name="title"><string>Doctors</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblDoctors">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#553C9A;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+          <item><widget class="QGroupBox" name="gbCritical">
+           <property name="title"><string>Critical Cases</string></property>
+           <layout class="QVBoxLayout">
+            <item><widget class="QLabel" name="lblCritical">
+             <property name="text"><string>0</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="styleSheet"><string>font-size:38px; font-weight:bold; color:#C53030;</string></property>
+            </widget></item>
+           </layout>
+          </widget></item>
+
+         </layout>
+        </item>
+
+        <!-- DSA Info Panel -->
+        <item>
+         <widget class="QGroupBox" name="gbDSA">
+          <property name="title"><string>📚  Data Structures in Use</string></property>
+          <layout class="QVBoxLayout">
+           <item><widget class="QLabel" name="lblDSAInfo">
+            <property name="text"><string>&lt;html&gt;&lt;body style='font-size:12px; line-height:1.7'&gt;
+&lt;b&gt;🔵 Triage Queue&lt;/b&gt; — Priority Queue built on a singly linked list. Patients are served by severity (Critical → High → Medium → Low), regardless of arrival order. Enqueue: O(n) | Dequeue: O(1)&lt;br/&gt;
+&lt;b&gt;🟢 Patient Records&lt;/b&gt; — Doubly linked list storing all admitted patients. Supports O(n) search by name/doctor, O(1) insert at head, and O(n) deletion.&lt;br/&gt;
+&lt;b&gt;🟡 Doctor History&lt;/b&gt; — Stack (LIFO) per doctor records every admit/discharge/update action. Most recent action always on top. Push/Pop: O(1)
+&lt;/body&gt;&lt;/html&gt;</string></property>
+            <property name="wordWrap"><bool>true</bool></property>
+           </widget></item>
+          </layout>
+         </widget>
+        </item>
+
+        <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+       </layout>
+      </widget>
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!-- TAB 1: Triage Queue                                -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="tabQueue">
+       <attribute name="title"><string>Triage Queue</string></attribute>
+       <layout class="QHBoxLayout">
+        <property name="margin"><number>16</number></property>
+
+        <!-- Add to Queue Form -->
+        <item>
+         <widget class="QGroupBox" name="gbAddQueue">
+          <property name="title"><string>Add Patient to Triage Queue</string></property>
+          <property name="maximumWidth"><number>320</number></property>
+          <layout class="QFormLayout">
+           <item><property name="label"><string>Full Name:</string></property>
+            <widget class="QLineEdit" name="queueName"><property name="placeholderText"><string>Enter patient name</string></property></widget></item>
+           <item><property name="label"><string>Age:</string></property>
+            <widget class="QSpinBox" name="queueAge"><property name="minimum"><number>1</number></property><property name="maximum"><number>120</number></property></widget></item>
+           <item><property name="label"><string>Gender:</string></property>
+            <widget class="QComboBox" name="queueGender">
+             <item><property name="text"><string>Male</string></property></item>
+             <item><property name="text"><string>Female</string></property></item>
+             <item><property name="text"><string>Other</string></property></item>
+            </widget></item>
+           <item><property name="label"><string>Disease/Complaint:</string></property>
+            <widget class="QLineEdit" name="queueDisease"><property name="placeholderText"><string>Primary complaint</string></property></widget></item>
+           <item><property name="label"><string>Assign Doctor:</string></property>
+            <widget class="QComboBox" name="queueDoctor">
+             <item><property name="text"><string>Dr. Sarah Ahmed</string></property></item>
+             <item><property name="text"><string>Dr. Rahul Khan</string></property></item>
+             <item><property name="text"><string>Dr. Aisha Malik</string></property></item>
+             <item><property name="text"><string>Dr. James Cooper</string></property></item>
+            </widget></item>
+           <item><property name="label"><string>Severity:</string></property>
+            <widget class="QComboBox" name="queueSeverity">
+             <item><property name="text"><string>🔴 Critical</string></property></item>
+             <item><property name="text"><string>🟠 High</string></property></item>
+             <item><property name="text"><string>🟡 Medium</string></property></item>
+             <item><property name="text"><string>🟢 Low</string></property></item>
+            </widget></item>
+           <item><widget class="QPushButton" name="btnAddToQueue"><property name="text"><string>➕  Add to Queue</string></property></widget></item>
+           <item><widget class="QPushButton" name="btnAdmitNext"><property name="text"><string>✅  Admit Next Patient</string></property></widget></item>
+           <item><widget class="QPushButton" name="btnClearQueue"><property name="text"><string>🗑  Clear Queue</string></property></widget></item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Queue Table -->
+        <item>
+         <layout class="QVBoxLayout">
+          <item><widget class="QLabel" name="lblQueueCount">
+           <property name="text"><string>Patients in queue: &lt;b&gt;0&lt;/b&gt;</string></property>
+           <property name="styleSheet"><string>font-size:13px;</string></property>
+          </widget></item>
+          <item><widget class="QTableWidget" name="queueTable"/></item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!-- TAB 2: Patients                                    -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="tabPatients">
+       <attribute name="title"><string>Patients</string></attribute>
+       <layout class="QVBoxLayout">
+        <property name="margin"><number>16</number></property>
+
+        <!-- Toolbar -->
+        <item>
+         <layout class="QHBoxLayout">
+          <item><widget class="QLineEdit" name="searchBar"><property name="placeholderText"><string>🔍  Search by patient name...</string></property></widget></item>
+          <item><widget class="QPushButton" name="btnSearchPatient"><property name="text"><string>Search</string></property></widget></item>
+          <item><widget class="QPushButton" name="btnClearSearch"><property name="text"><string>Clear</string></property></widget></item>
+          <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+          <item><widget class="QPushButton" name="btnAdmitPatient"><property name="text"><string>✅  Admit from Queue</string></property></widget></item>
+          <item><widget class="QPushButton" name="btnDischarge"><property name="text"><string>🔴  Discharge Selected</string></property></widget></item>
+         </layout>
+        </item>
+
+        <item><widget class="QTableWidget" name="patientTable"/></item>
+
+        <item>
+         <layout class="QHBoxLayout">
+          <item><widget class="QLabel" name="lblPatientCount"><property name="text"><string>Total records: &lt;b&gt;0&lt;/b&gt;</string></property></widget></item>
+          <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+          <item><widget class="QLabel" name="lblSelectedPatient"><property name="text"><string>Select a row to view details</string></property></widget></item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!-- TAB 3: Doctors                                     -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="tabDoctors">
+       <attribute name="title"><string>Doctors</string></attribute>
+       <layout class="QHBoxLayout">
+        <property name="margin"><number>16</number></property>
+
+        <!-- Doctor Form -->
+        <item>
+         <widget class="QGroupBox" name="gbAddDoctor">
+          <property name="title"><string>Add New Doctor</string></property>
+          <property name="maximumWidth"><number>300</number></property>
+          <layout class="QFormLayout">
+           <item><property name="label"><string>Name:</string></property>
+            <widget class="QLineEdit" name="doctorName"><property name="placeholderText"><string>Dr. Full Name</string></property></widget></item>
+           <item><property name="label"><string>Specialization:</string></property>
+            <widget class="QLineEdit" name="doctorSpec"><property name="placeholderText"><string>e.g. Cardiology</string></property></widget></item>
+           <item><property name="label"><string>Contact:</string></property>
+            <widget class="QLineEdit" name="doctorPhone"><property name="placeholderText"><string>Phone number</string></property></widget></item>
+           <item><widget class="QPushButton" name="btnAddDoctor"><property name="text"><string>➕  Add Doctor</string></property></widget></item>
+           <item><widget class="QPushButton" name="btnRemoveDoctor"><property name="text"><string>🗑  Remove Selected</string></property></widget></item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Doctors List + History -->
+        <item>
+         <layout class="QVBoxLayout">
+          <item><widget class="QTableWidget" name="doctorTable"/></item>
+          <item><widget class="QLabel" name="lblDoctorHistory">
+           <property name="text"><string>Select a doctor to view their action history (Stack — LIFO)</string></property>
+           <property name="styleSheet"><string>font-size:12px; color:#4A5568;</string></property>
+          </widget></item>
+          <item><widget class="QTableWidget" name="historyTable"/></item>
+         </layout>
+        </item>
+
+       </layout>
+      </widget>
+
+     </widget> <!-- end tabWidget -->
+    </item>
+
+   </layout>
+  </widget>
+
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+
+ <connections/>
+</ui>
