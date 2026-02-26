@@ -43,9 +43,6 @@ MainWindow::~MainWindow() {
 }
 
 
-
-
-
 void MainWindow::setupUI() {
     
     setMinimumSize(1100, 700);
@@ -169,8 +166,6 @@ void MainWindow::applyStyleSheet() {
 
 
 
-
-
 void MainWindow::refreshDashboard() {
     HospitalStats s = hospital.getStats();
 
@@ -285,9 +280,6 @@ void MainWindow::refreshQueueTable() {
 }
 
 
-
-
-
 void MainWindow::on_btnDischarge_clicked() {
     int row = ui->patientTable->currentRow();
     if (row < 0) { showStatusMessage("Select a patient row first.", true); return; }
@@ -367,9 +359,6 @@ void MainWindow::populateTable(QTableWidget* table, const QVector<Patient>& pati
         table->setItem(i, 7, statusItem);
     }
 }
-
-
-
 
 
 void MainWindow::on_btnAddDoctor_clicked() {
@@ -460,9 +449,6 @@ void MainWindow::refreshDoctorHistory() {
         QString("Action history for <b>%1</b> (most recent first — Stack LIFO):")
         .arg(d->name));
 }
-
-
-
 
 
 void MainWindow::showStatusMessage(const QString& msg, bool isError) {
